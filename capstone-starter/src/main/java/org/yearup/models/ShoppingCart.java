@@ -13,6 +13,13 @@ public class ShoppingCart
         return items;
     }
 
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "items=" + items +
+                '}';
+    }
+
     public void setItems(Map<Integer, ShoppingCartItem> items)
     {
         this.items = items;
@@ -36,9 +43,9 @@ public class ShoppingCart
     public BigDecimal getTotal()
     {
         BigDecimal total = items.values()
-                                .stream()
-                                .map(i -> i.getLineTotal())
-                                .reduce( BigDecimal.ZERO, (lineTotal, subTotal) -> subTotal.add(lineTotal));
+                .stream()
+                .map(i -> i.getLineTotal())
+                .reduce( BigDecimal.ZERO, (lineTotal, subTotal) -> subTotal.add(lineTotal));
 
         return total;
     }
